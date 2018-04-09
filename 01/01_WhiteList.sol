@@ -4,7 +4,7 @@ pragma solidity 0.4.21;
 contract ERC20Basic {
 
 	uint256 public totalSupply;
-	function balanceOf(address who) public constant returns (uint256);
+	function balanceOf(address who) public view returns (uint256);
  	function transfer(address to, uint256 value) public returns (bool);
  	event Transfer(address indexed from, address indexed to, uint256 value);
 
@@ -13,7 +13,7 @@ contract ERC20Basic {
 
 contract ERC20 is ERC20Basic {
 
- 	function allowance(address owner, address spender) public constant returns (uint256);
+ 	function allowance(address owner, address spender) public view returns (uint256);
  	function transferFrom(address from, address to, uint256 value) public returns (bool);
  	function approve(address spender, uint256 value) public returns (bool);
  	event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -66,7 +66,7 @@ contract BasicToken is ERC20Basic {
 		return true; 
   	} 
  
-  	function balanceOf(address _owner) public constant returns (uint256 balance) { 
+  	function balanceOf(address _owner) public view returns (uint256 balance) { 
   		require(_owner != address(0));
 
 		return balances[_owner]; 
@@ -100,7 +100,7 @@ contract StandardToken is ERC20, BasicToken {
 		return true; 
   	}
  
-  	function allowance(address _owner, address _spender) public constant returns (uint256 remaining) { 
+  	function allowance(address _owner, address _spender) public view returns (uint256 remaining) { 
   		require(_owner != address(0));
   		require(_spender != address(0));
 
